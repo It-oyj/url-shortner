@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   const onShortUrlClick = (shortUrl) => {
-    const url = `https://itoyj.herokuapp.com/go/${shortUrl}`;
+    const url = `${window.location.origin}/go/${shortUrl}`;
     navigator.clipboard.writeText(url).then(
       () => {
         console.log("Copied link to the clipboard");
@@ -112,7 +112,7 @@ export default function Home() {
                   <td
                     style={styles.tableShortUrlCell}
                     onClick={() => onShortUrlClick(short)}
-                  >{`https://itoyj.herokuapp.com/go/${short}`}</td>
+                  >{`${window.location.origin}/go/${short}`}</td>
                   <td>{long}</td>
                 </tr>
               );
