@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   const onShortUrlClick = (shortUrl) => {
-    const url = `http://localhost:3000/go/${shortUrl}`;
+    const url = `https://itoyj.herokuapp.com/go/${shortUrl}`;
     navigator.clipboard.writeText(url).then(
       () => {
         console.log("Copied link to the clipboard");
@@ -75,6 +75,7 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
+      console.log("host1234 ",window.location.origin)
       await refreshLinks();
     })();
   }, []);
@@ -105,14 +106,13 @@ export default function Home() {
           </thead>
           <tbody>
             {Object.keys(links).map((short) => {
-              // links is form of { shortUrl: longUrl }, so the short url is key
               const long = links[short];
               return (
                 <tr key={short}>
                   <td
                     style={styles.tableShortUrlCell}
                     onClick={() => onShortUrlClick(short)}
-                  >{`${short}`}</td>
+                  >{`https://itoyj.herokuapp.com/go/${short}`}</td>
                   <td>{long}</td>
                 </tr>
               );
