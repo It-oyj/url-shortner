@@ -95,7 +95,31 @@ export default function Home() {
           Make it short
         </button>
       </div>
-
+      <div>
+        <table style={styles.table}>
+          <thead>
+            <tr>
+              <td style={styles.tableHeader}>Short url</td>
+              <td style={styles.tableHeader}>Original url</td>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(links).map((short) => {
+              // links is form of { shortUrl: longUrl }, so the short url is key
+              const long = links[short];
+              return (
+                <tr key={short}>
+                  <td
+                    style={styles.tableShortUrlCell}
+                    onClick={() => onShortUrlClick(short)}
+                  >{`${short}`}</td>
+                  <td>{long}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
